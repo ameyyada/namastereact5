@@ -1,4 +1,11 @@
-.header{
+@import "tailwindcss";
+
+
+
+
+
+
+/* .header{
 
     display: flex;
     justify-content: space-between;
@@ -75,4 +82,4 @@
     padding: 5px;
     margin: 5px;
 
-}
+} */

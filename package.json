@@ -1,18 +1,30 @@
 {
   "name": "namastereact5",
   "version": "1.0.0",
-  "description": "This is Namaste React by Amey Yadav",
-  "main": "index.js",
+  "description": "This is Namaste React by Amey yadav",
   "scripts": {
+    "start": "parcel index.html ",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
     "type": "git",
-    "url": "(https://github.com/ameyyada/Namaste-React5)"
+    "url": "(https://github.com/ameyyada/namastereact5)"
   },
-  "author": "Amey  yadav",
+  "author": "Amey yadav",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.13.3"
-  }
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router": "^7.1.3",
+    "tailwindcss": "^4.0.3"
+  },
+  "browsers-list": [
+    "last 2 versions"
+  ]
 }
