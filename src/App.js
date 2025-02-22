@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react"
+import React, { lazy, Suspense, useContext, useEffect, useState } from "react"
 import ReactDOM from "react-dom/client"
 import Body from "./components/Body"
 import Header from "./components/Header"
@@ -8,7 +8,7 @@ import Contact from "./components/Contact"
 import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
  // import Grocery from "./components/Grocery"
-
+import userContext from "./utils/userContext"
 
 
 // const heading= React.createElement("h1",{id:"heading"}, "Namaste  React")
@@ -23,14 +23,28 @@ const Grocery =lazy(()=>
 
 const AppLayout =()=>{
 
+  const[userName , setuserName] =useState()
 
+
+
+
+  useEffect(()=>{
+ 
+    //make an API  call  and send username and password
+const data ={
+  name :"Amey yadav"
+}
+
+setuserName(data.name)
+  },[])
 
   return  (
-    
+    <userContext.Provider  value={{ loggedInUser:userName  , setuserName}}>
   <div className="app">
    <Header/>
    <Outlet />
   </div>
+  </userContext.Provider>
   )
   
 }

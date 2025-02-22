@@ -17,7 +17,7 @@ const[ResInfo, setResInfo] = useState(null)
         
         const json = await data.json()
         setResInfo(json.data)
-        console.log(json.data)
+        //console.log(json.data)
         
             }
 

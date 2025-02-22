@@ -1,9 +1,10 @@
  import RestaurantCard, { WithPromotedLabel } from "./RestaurantCard"
 
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import Shimmer from "./Shimmer"
 import { Link } from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus"
+import userContext from "../utils/userContext"
  
 
 
@@ -14,8 +15,7 @@ import useOnlineStatus from "../utils/useOnlineStatus"
 const[listOfRetaurant, setlistOfRestaurant]=useState([])
 const[filteredRestaurant, setFilteredRestaurant]=useState([])
 const[searchText, setsearchText]=useState("")
-
-
+const {setuserName , loggedInUser} = useContext(userContext)
 
 const RestaurantCardPromoted = WithPromotedLabel(RestaurantCard)
 
@@ -78,6 +78,10 @@ if(listOfRetaurant.length === 0){
           }>
             Top  Rated Restaurant
           </button>
+        </div>
+
+        <div className="py-1">
+        <input  className="border border-black px-2 py-1 m-2"  value={loggedInUser} onChange={(e)=> setuserName(e.target.value)}/>
         </div>
          
   
