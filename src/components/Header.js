@@ -3,6 +3,8 @@ import { LOGO_URL } from "../utils/constants"
 import { Link } from "react-router"
 import useOnlineStatus from "../utils/useOnlineStatus"
 import userContext from "../utils/userContext"
+import { useDispatch, useSelector } from "react-redux"
+import { addItem } from "../utils/cartSlice"
 
 
 
@@ -11,7 +13,15 @@ const Header=()=>{
   const[btnNameReact, setbtnNameReact]=useState("login")
 const onlineStatus  = useOnlineStatus()
 const {loggedInUser }= useContext(userContext)
-console.log(loggedInUser)
+//console.log(loggedInUser)
+
+
+const cartItems =useSelector((store)=> store.cart.items)
+console.log(cartItems)
+
+
+
+
 
 
     return(
@@ -21,7 +31,7 @@ console.log(loggedInUser)
     </div>
     <div className="p-4 m-4 content-center">
      <ul className="flex">
-      <li className="px-4">
+      <li className="px-4" >
         Online Staus:{ onlineStatus ? "✅" : "🛑" }
       </li>
       <li  className="px-4">
@@ -36,7 +46,9 @@ console.log(loggedInUser)
         <li className="px-4">
           <Link to={"/grocery"}>Grocery</Link>
         </li>
-      <li className="px-4">Cart</li>
+      <li className="px-4 ">
+         <Link  to={"/cart"}>Cart-{cartItems.length} items
+         </Link></li>
       <button className="login px-4 w-24"
       onClick={()=>{
         btnNameReact=="login"? setbtnNameReact("logout"):setbtnNameReact("login")

@@ -9,6 +9,9 @@ import Error from "./components/Error"
 import RestaurantMenu from "./components/RestaurantMenu"
  // import Grocery from "./components/Grocery"
 import userContext from "./utils/userContext"
+import { Provider } from "react-redux"
+import appStore from "./utils/appStore"
+import Cart from "./components/Cart"
 
 
 // const heading= React.createElement("h1",{id:"heading"}, "Namaste  React")
@@ -39,12 +42,14 @@ setuserName(data.name)
   },[])
 
   return  (
+    <Provider store={appStore}>
     <userContext.Provider  value={{ loggedInUser:userName  , setuserName}}>
   <div className="app">
    <Header/>
    <Outlet />
   </div>
   </userContext.Provider>
+  </Provider>
   )
   
 }
@@ -76,14 +81,21 @@ const appRouter =createBrowserRouter([
         element:(
           <Suspense><Grocery /></Suspense> 
       )
-      }
+      } ,
+      {
+        path:"/restaurants/:resID",
+        element:<RestaurantMenu />
+         },
+
+         {
+          path:"/cart",
+          element:<Cart />
+           }
+
     ],
     errorElement:<Error />
   },
-  {
- path:"/restaurants/:resID",
- element:<RestaurantMenu />
-  }
+  
  
 ])
 
